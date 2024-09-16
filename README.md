@@ -41,17 +41,9 @@
     <ul>
         <li>
             The first step in creating the lab environment is to have an active subscription to Microsoft Azure. This can be done through a paid subscription with Azure, or in this case, I used the free trial offered by Microsoft.
-            
-<p align="center">
-    <img src="https://github.com/user-attachments/assets/a3e69475-d5d3-4216-b823-3a72d7952b6c"/> 
-</p>
         </li>
         <li>
             Once the subscription is in place, the first step is to create the virtual machine that will act as the honeypot for the exercise. Access the “Virtual Machines” service and click “Create”, selecting the “Azure virtual machine” option. In this section, I named my virtual machine, selected its location (East US 2), chose an operating system image (Windows 10 Pro), and set the admin account username and password.
-
-<p align="center">
-    <img src="https://github.com/user-attachments/assets/d5981218-c07c-4e3b-a944-0716ed2c5986"/>
-</p>
         </li>
         <li>
             Before creating the virtual machine, in the “Networking” tab of the VM creation process, I made a network security group with an inbound rule allowing traffic to any destination port using any protocol. This acts as an insecure firewall allowing any internet traffic into the virtual machine. After this step, you can select review and create, and Azure will begin creating the virtual machine.
@@ -74,12 +66,9 @@
         <li>
             Next, I downloaded a log exporter PowerShell script from Josh Madakor's page on GitHub that pulls IP addresses from the Event Viewer. In conjunction with an IP geolocation API, it retrieves geolocation data such as country, state, city, latitude, longitude, and time zone. To function properly, I requested a new API key from the website and replaced the default key in the PowerShell script, then saved it to my virtual machine. The free version of the service only allows for 1,000 API requests, so I used the paid version for more extensive results at the end of the lab. After running the script, it created a log file and started recording any failed RDP logons (Event ID 4625) with the associated geolocation data.
             <ul>
-                <li>PowerShell Script</li>
-                <li>Geolocation API</li>
+                <li><a href="https://github.com/joshmadakor1/Sentinel-Lab/blob/main/Custom_Security_Log_Exporter.ps1" target="_blank">PowerShell Script</a></li>
+                <li><a href="https://ipgeolocation.io/" target="_blank">Geolocation API</a></li>
             </ul>
-            <div class="note">
-                ADD PICTURE OF SCRIPT RUNNING
-            </div>
         </li>
         <li>
             Now that there is a log with the geodata, we can create a custom log in Log Analytics Workspace that allows us to interact with the data. In the left side panel in the Log Analytics Workspace under “Tables,” then “Create,” I created a new custom log. Here it asks for a sample log, which trains Log Analytics on what to look for in the data. I used the sample log that was created on the VM when I first ran the PowerShell script. Next, it asks for the collection path, which is where the log is located on the VM. Since it’s running Windows 10 Pro, I selected the type as Windows and entered the exact file path (e.g., <code>C:\ProgramData</code>). In “Details,” I named the custom log <code>FAILED_RDP_GEO_CL</code> and then finished creating the log.
@@ -97,6 +86,10 @@
 <h2> Final Results </h2>
 <p>
     After a few days of monitoring the traffic, I collected over 397,000 security events on the virtual machine. From these events, 24,200 came from failed RDP logins to the machine. Over the course of the experiment, attacks were recorded from 14 different countries around the world. The biggest threat by far was Russia, with an incredible 17,900 failed logins. Russia was eight times more active than the next biggest threat, Egypt, which had 2,240 failed attempts. Russia accounted for nearly 75% of the total RDP failures. Vietnam, Mexico, the Philippines, and Ukraine were also very active, with clear signs of brute force activity. These countries all logged heavy, simultaneous traffic, indicating that the attackers were persistent and likely more sophisticated than those from countries with fewer attempts. The attackers from the US, France, Brazil, Jordan, Hong Kong, Singapore, and Morocco were not very persistent; it appears that these attackers would try a few passwords before giving up.
+</p>
+
+<p align="center">
+    <img src="https://github.com/user-attachments/assets/01512ab8-695e-4c3a-bf49-7070ed0baeb0" height="85%" width="85%"/> 
 </p>
 
 
