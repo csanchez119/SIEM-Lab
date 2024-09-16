@@ -1,6 +1,5 @@
 <h1> SIEM Lab - Live RDP Brute Force</h1>
-** Additional pictures are included in <a href="https://github.com/csanchez119/SIEM-Lab/blob/main/SIEM%20Lab%20-%20Live%20RDP%20Brute%20Force.pdf">SIEM Lab - Live RDP Brute Force.pdf</a> **
-
+<b>** Additional pictures are included in <a href="https://github.com/csanchez119/SIEM-Lab/blob/main/SIEM%20Lab%20-%20Live%20RDP%20Brute%20Force.pdf">SIEM Lab - Live RDP Brute Force.pdf</a> **</b>
 <h2>Abstract</h2>
 - This project aims to analyze and derive insights from live attack traffic to understand the risks associated with unsecured endpoints. The project employed Microsoft Azure to set up a honeypot virtual machine, establish a log analytics workspace, configure Microsoft Sentinel for security information and event management (SIEM), and visualize the collected data. PowerShell was utilized to extract data on failed Remote Desktop Protocol (RDP) logins identified in the Windows Event Viewer, which was then enriched with geolocation information via an API to pinpoint the origin of these login attempts. To maximize data collection, the virtual machine was configured with an inbound network rule to allow all traffic, and the Windows Firewall was disabled, increasing its visibility and accessibility to potential attackers. A custom log was generated and visualized in Sentinel, displaying attack attempts geographically by country, latitude, and longitude. The analysis of this data provided valuable insights into the vulnerabilities of inadequately secured endpoints and highlighted the significant risks of exposing such systems on insecure networks.
 <br />
@@ -92,7 +91,7 @@
     <img src="https://github.com/user-attachments/assets/01512ab8-695e-4c3a-bf49-7070ed0baeb0" height="85%" width="85%"/> 
 </p>
 
-** New attacks from Sri Lanka, Kenya, Iran, Lithuania, and Turkey **
+<b>** New attacks from Saudi Arabia, Sri Lanka, Kenya, Iran, Lithuania, and Turkey **</b>
 
 
 
