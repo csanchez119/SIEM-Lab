@@ -37,16 +37,24 @@
 </ol>
 
 
-<h2> Project walk-through: </h2>
+<h2> Project walk-through: </h2> 
     <ul>
         <li>
             The first step in creating the lab environment is to have an active subscription to Microsoft Azure. This can be done through a paid subscription with Azure, or in this case, I used the free trial offered by Microsoft.
+            
+<p align="center">
+    <img src="https://github.com/user-attachments/assets/a3e69475-d5d3-4216-b823-3a72d7952b6c"/> 
+</p>
         </li>
         <li>
-            Once the subscription is in place, the first step is to create the virtual machine that will act as the honeypot for the exercise. Access the “Virtual Machines” service and click “Create”, selecting the “Azure virtual machine” option. In this section I named my virtual machine, selected its location (East US 2), chose an operating system image (Windows 10 Pro), and set the admin account username and password.
+            Once the subscription is in place, the first step is to create the virtual machine that will act as the honeypot for the exercise. Access the “Virtual Machines” service and click “Create”, selecting the “Azure virtual machine” option. In this section, I named my virtual machine, selected its location (East US 2), chose an operating system image (Windows 10 Pro), and set the admin account username and password.
+
+<p align="center">
+    <img src="https://github.com/user-attachments/assets/d5981218-c07c-4e3b-a944-0716ed2c5986"/>
+</p>
         </li>
         <li>
-            Before actually creating the virtual machine, in the “Networking” tab of the VM creation process, I created a network security group with an inbound rule allowing traffic to any destination port using any protocol. This acts as an insecure firewall allowing any internet traffic into the virtual machine. After this step, you can select review and create, and Azure will begin creating the virtual machine.
+            Before creating the virtual machine, in the “Networking” tab of the VM creation process, I made a network security group with an inbound rule allowing traffic to any destination port using any protocol. This acts as an insecure firewall allowing any internet traffic into the virtual machine. After this step, you can select review and create, and Azure will begin creating the virtual machine.
         </li>
         <li>
             Next, I created a log repository to ingest logs from the virtual machine. Using “Log Analytics Workspaces” in Azure, click “Create,” name your workspace, and add it to the same resource group as the virtual machine. I also added the workspace to the same location as the virtual machine (East US 2). Finally, review and create.
