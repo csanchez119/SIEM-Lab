@@ -40,7 +40,7 @@
 <h2> Project walk-through: </h2>
     <ul>
         <li>
-            The first step for creating our lab environment is having an active subscription with Microsoft Azure. This can be done through a paid subscription with Azure, or in this case, I used the free trial offered by Microsoft.
+            The first step in creating the lab environment is to have an active subscription to Microsoft Azure. This can be done through a paid subscription with Azure, or in this case, I used the free trial offered by Microsoft.
         </li>
         <li>
             Once the subscription is in place, the first step is to create the virtual machine that will act as the honeypot for the exercise. Access the “Virtual Machines” service and click “Create”, selecting the “Azure virtual machine” option. In this section I named my virtual machine, selected its location (East US 2), chose an operating system image (Windows 10 Pro), and set the admin account username and password.
